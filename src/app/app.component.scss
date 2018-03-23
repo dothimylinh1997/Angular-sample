@@ -1,0 +1,23 @@
+:host { 
+    display: flex;
+}
+app-menu-side-bar {
+    height: 100vh;
+    width: 220px;
+    background-color: beige;
+}
+app-container {
+    flex: 1;
+}
+/* app-header{
+    flex:1;
+} */
+/* app-container{
+    background: red;
+    justify-content: flex-start;
+} */
+/* app-menu-controls{
+    background: green;
+    
+    justify-content: flex-end;
+} */
