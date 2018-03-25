@@ -33,16 +33,16 @@
 // ];
 //     constructor(){}
 
-    // gotoFolder(){
-    //     this.folderName = 'JTC Share > Demo';
-    // }
-    // gotoBack(){
-    //     this.folderName = 'JTC Share';
-    // }
+// gotoFolder(){
+//     this.folderName = 'JTC Share > Demo';
+// }
+// gotoBack(){
+//     this.folderName = 'JTC Share';
+// }
 //}
 
 import { Component } from '@angular/core';
-
+import { FormsModule } from '@angular/forms'
 @Component({
     selector: 'app-container',
     templateUrl: 'container.component.html',
@@ -54,20 +54,38 @@ export class ContainerComponent {
     now: Date = new Date(Date.now());
     imgUrl: String = 'assets/logo-white.png';
     textValue: String = 'Janeto';
+
+    newName: String = '';
+    newMember: String= '';
     files: any[] = [{
+        id: '1',
         name: 'Angular',
         modified: new Date(Date.now()),
         members: ['Kien', 'Hue'],
         type: 'folder'
     }, {
+        id: '2',
         name: 'Janeto Intro',
         modified: new Date(Date.now()),
         members: ['Kha', 'Linh'],
         type: 'folder'
     }, {
+        id: '3',
         name: 'Nodejs',
         modified: new Date(Date.now()),
         members: ['Khanh', 'Huy'],
+        type: 'docx'
+    }, {
+        id: '4',
+        name: 'PHP',
+        modified: new Date(Date.now()),
+        members: ['Kim', 'Lan'],
+        type: 'folder'
+    }, {
+        id: '5',
+        name: 'C++',
+        modified: new Date(Date.now()),
+        members: ['Lien', 'Hai'],
         type: 'docx'
     }];
     folder: String = 'Home';
@@ -89,10 +107,35 @@ export class ContainerComponent {
     changeFolder(name) {
         this.folder = name;
     }
+    temp: any;
+    
+    checkfile(check) {
+        this.temp = check;
+    }
+    deleteFile(id) {
+        if (this.temp === true) {
+            for (let i = 0; i < this.files.length; i++) {
+                if (this.files[i].id === id) {
+                    this.files.splice(i, 1); // Xoa tai phan tu thu i va chi xoa 1 phan tu
+                }
+            }
+        }
+    }
+
+    Them(){
+        this.files.push({
+            id: File.length + 1,
+            name:this.newName,
+            members: this.newMember,
+            modified: new Date(Date.now()),
+            type: 'folder'
+        })
+    }
+
 }
-export interface IFile{
-    name : String;
-    modified : Date;
-    members : String;
+export interface IFile {
+    name: String;
+    modified: Date;
+    members: String;
     type: String;
 }

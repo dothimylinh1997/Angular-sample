@@ -20,7 +20,7 @@
 <h2>{{folder}}</h2>
 <table>
     <thead>
-        <th></th>
+        <th>Check box</th>
         <th>Name</th>
         <th>Modified</th>
         <th>Members</th>
@@ -28,6 +28,14 @@
     </thead>
     <tbody>
         <tr app-file *ngFor='let file of files' 
-        [file]='file' (go)="changeFolder($event)"></tr>
+        [file]='file' (go)= "deleteFile($event)" (go) = "checkfile($event)"></tr>
     </tbody>
 </table>
+
+<input type="text" placeholder="Mời bạn nhập Name" [(ngModel)] = "newName"/>
+<br>
+<br>
+<input type="text" placeholder="Mời bạn nhập Member" [(ngModel)] = "newMember"/>
+<br>
+<br>
+<button (click)="Them()">Add</button>

@@ -1,5 +1,5 @@
 <td>
-  <input type="checkbox">
+  <input type="checkbox" [name]="check" (click)= "checkFile(check)">
 </td>
 <td class="name" (click)="goTo(file.name)">
   <span *ngIf="file.type === 'folder'" class="fa fa-folder"></span>
@@ -8,7 +8,7 @@
 <td>{{file.modified | date: 'short'}}</td>
 <td>{{file.members}}</td>
 <td>
-  <button (click)="action(file)">
-    <i class="fa fa-plus"></i>
+  <button (click)="deleteFile(file.id)">
+    <i class="fa fa-minus"></i>
   </button>
 </td>
